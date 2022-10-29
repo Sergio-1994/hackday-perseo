@@ -1,6 +1,7 @@
 package team.perseo.Controllers;
 
 
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,12 +26,17 @@ public class LlamarApi {
         return result;
     }
 
-    @GetMapping (value = "/callclientehello")
-    public List<Object> getAgent (){
-        String uri = "https://mqjl9s6vf4.execute-api.eu-west-1.amazonaws.com/prod/v1/hackday/public/event";
-        RestTemplate restTemplate = new RestTemplate();
-        Object[] callclientehello  = restTemplate.getForObject(uri, Object[].class);
-        return Arrays.asList(callclientehello);
+    @GetMapping (value = "/listar")
+    public void listar(){
+        String url = "https://mqjl9s6vf4.execute-api.eu-west-1.amazonaws.com/prod/v1/hackday/public/event";
+
+        RestTemplate salida = new RestTemplate();
+        String agentes = salida.getForObject(url,String.class);
+        System.out.println("Salidadddd"+ agentes);
+        JSONObject jsonObject = new JSONObject(agentes);
+        System.out.println("OBJECT : "+jsonObject.get("payload").toString());
+
 
     }
+
 }
