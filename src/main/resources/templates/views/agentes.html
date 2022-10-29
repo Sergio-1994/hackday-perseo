@@ -30,24 +30,11 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="en:${employee}">
-            <th scope="row" th:text="${en.id}"></th>
+        <tr th:each="en:${data}">
+            <th scope="row" th:text="${en}"></th>
             <td th:text="${en.name}"></td>
-            <td th:text="${en.phone}"></td>
-            <td th:text="${en.email}"></td>
-            <td th:text="${en.rol.rol}"></td>
-            <td th:text="${en.enterprise.name}"></td>
-            <td th:text="${en.createdAt}"></td>
-            <td th:text="${en.updatedAt}"></td>
-            <td>
-                <a class="btn btn-success" th:href="@{/views/employe/editar/}+${en.id}" title="Editar registro">
-                    <i class='fas fa-edit'></i>
-                </a>
-                <a class="btn btn-danger" th:href="@{/views/employe/eliminar/}+${en.id}" title="Eliminar registro"
-                   onclick="return confirm('Esta seguro de eliminar el registro?');">
-                    <i class='fas fa-trash-alt'></i>
-                </a>
-            </td>
+
+
         </tr>
         </tbody>
     </table>
